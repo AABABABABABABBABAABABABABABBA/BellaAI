@@ -1,7 +1,7 @@
 {
   "default": {
     "identifier": "default",
-    "description": "Default capabilities for HackerAI Desktop",
+    "description": "Default capabilities for BellaAI Desktop",
     "remote": { "urls": ["http://localhost:*", "https://hackerai.co/*"] },
     "local": true,
     "windows": ["main"],

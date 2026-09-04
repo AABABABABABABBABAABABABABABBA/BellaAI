@@ -17,21 +17,21 @@ import {
 import { PricingPlans } from "./PricingPlans";
 
 const description =
-  "Compare current HackerAI Free, Pro, Pro+, Ultra, and Team pricing for AI-assisted penetration testing, local Agent mode, files, and cloud agents.";
+  "Compare current BellaAI Free, Pro, Pro+, Ultra, and Team pricing for AI-assisted penetration testing, local Agent mode, files, and cloud agents.";
 
 export const metadata: Metadata = {
   ...canonicalMetadata("/pricing"),
-  title: "Pricing | HackerAI",
+  title: "Pricing | BellaAI",
   description,
   openGraph: {
-    title: "HackerAI Pricing",
+    title: "BellaAI Pricing",
     description,
     type: "website",
     url: "/pricing",
   },
   twitter: {
     card: "summary",
-    title: "HackerAI Pricing",
+    title: "BellaAI Pricing",
     description,
   },
 };

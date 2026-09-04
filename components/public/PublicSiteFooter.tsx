@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
-import { HackerAISVG } from "@/components/icons/hackerai-svg";
+import { BellaAISVG } from "@/components/icons/hackerai-svg";
 import { GITHUB_URL, HELP_CENTER_URL, STATUS_PAGE_URL } from "@/lib/seo/site";
 
 type FooterLink = { href: string; label: string; external?: boolean };
@@ -48,11 +48,11 @@ export function PublicSiteFooter() {
             <Link
               href="/"
               className="inline-flex items-center gap-2 rounded-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-              aria-label="HackerAI home"
+              aria-label="BellaAI home"
             >
-              <HackerAISVG theme="dark" scale={0.12} />
+              <BellaAISVG theme="dark" scale={0.12} />
               <span className="text-lg font-semibold text-foreground">
-                HackerAI
+                BellaAI
               </span>
             </Link>
           </div>
@@ -86,7 +86,7 @@ export function PublicSiteFooter() {
           ))}
         </div>
         <p className="mt-12 border-t border-border/80 pt-6 text-xs text-muted-foreground">
-          &copy; {year} HackerAI LLC
+          &copy; {year} BellaAI LLC
         </p>
       </div>
     </footer>

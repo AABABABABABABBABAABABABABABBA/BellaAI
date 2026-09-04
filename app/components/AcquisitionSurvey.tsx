@@ -140,7 +140,7 @@ export function AcquisitionSurvey({
             Help us improve discovery
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Two quick questions about how you found HackerAI.
+            Two quick questions about how you found BellaAI.
           </p>
         </div>
         <Button
@@ -157,7 +157,7 @@ export function AcquisitionSurvey({
 
       <div className="mt-5 space-y-4">
         <label className="block text-sm font-medium" htmlFor="first-heard">
-          Where did you first hear about HackerAI?
+          Where did you first hear about BellaAI?
         </label>
         <select
           id="first-heard"

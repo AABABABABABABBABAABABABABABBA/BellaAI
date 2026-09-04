@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 import Link from "next/link";
-import { HackerAISVG } from "@/components/icons/hackerai-svg";
+import { BellaAISVG } from "@/components/icons/hackerai-svg";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@workos-inc/authkit-nextjs/components";
@@ -84,12 +84,10 @@ const Header: React.FC<HeaderProps> = ({ chatTitle, currentPath }) => {
         <Link
           href="/"
           className="flex items-center gap-2 rounded-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-          aria-label="HackerAI home"
+          aria-label="BellaAI home"
         >
-          <HackerAISVG theme="dark" scale={0.15} />
-          <span className="text-foreground text-xl font-semibold">
-            HackerAI
-          </span>
+          <BellaAISVG theme="dark" scale={0.15} />
+          <span className="text-foreground text-xl font-semibold">BellaAI</span>
         </Link>
         <div className="flex flex-1 gap-2 justify-between items-center">
           {chatTitle && (
@@ -180,12 +178,10 @@ const Header: React.FC<HeaderProps> = ({ chatTitle, currentPath }) => {
         <Link
           href="/"
           className="flex items-center gap-2 rounded-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-          aria-label="HackerAI home"
+          aria-label="BellaAI home"
         >
-          <HackerAISVG theme="dark" scale={0.12} />
-          <span className="text-foreground text-lg font-semibold">
-            HackerAI
-          </span>
+          <BellaAISVG theme="dark" scale={0.12} />
+          <span className="text-foreground text-lg font-semibold">BellaAI</span>
         </Link>
         {!loading && !user && (
           <div className="flex items-center gap-2">

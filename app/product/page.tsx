@@ -22,21 +22,20 @@ import { Button } from "@/components/ui/button";
 import {
   GITHUB_URL,
   HELP_CENTER_URL,
-  LOCAL_AGENT_HELP_URL,
   SOFTWARE_APPLICATION_JSON_LD,
   STATUS_PAGE_URL,
   canonicalMetadata,
 } from "@/lib/seo/site";
 
 const description =
-  "See how HackerAI combines security-focused AI, Agent mode, terminal and browser tools, files, and local or cloud execution for penetration testing.";
+  "See how BellaAI combines security-focused AI, Agent mode, terminal and browser tools, files, and local or cloud execution for penetration testing.";
 
 export const metadata: Metadata = {
   ...canonicalMetadata("/product"),
-  title: "Product | HackerAI",
+  title: "Product | BellaAI",
   description,
   openGraph: {
-    title: "HackerAI Product",
+    title: "BellaAI Product",
     description,
     type: "website",
     url: "/product",
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HackerAI Product",
+    title: "BellaAI Product",
     description,
     images: ["/images/hackerai-workspace.png"],
   },
@@ -66,7 +65,7 @@ const capabilities = [
   {
     icon: FileUp,
     title: "Your Context. Its Starting Point.",
-    copy: "Drop in reports, screenshots, source, and data. HackerAI works from what you give it instead of guessing at your environment.",
+    copy: "Drop in reports, screenshots, source, and data. BellaAI works from what you give it instead of guessing at your environment.",
   },
   {
     icon: Search,
@@ -82,7 +81,7 @@ const expectations = [
   },
   {
     title: "Nothing Local Until You Say So.",
-    copy: "Commands only run on your machine after you connect HackerAI Desktop or the Local Agent CLI.",
+    copy: "Commands only run on your machine after you connect BellaAI Desktop or the Local Agent CLI.",
   },
   {
     title: "Plans Set the Limits.",
@@ -139,7 +138,7 @@ export default function ProductPage() {
             </div>
             <ZoomableImage
               src="/images/hackerai-workspace.png"
-              alt="HackerAI Agent mode running recon on hackerai.co: a to-do plan, reasoning, and commands executing in the task"
+              alt="BellaAI Agent mode running recon on hackerai.co: a to-do plan, reasoning, and commands executing in the task"
               width={2240}
               height={1400}
               priority
@@ -158,7 +157,7 @@ export default function ProductPage() {
               <p className={sectionLead}>
                 Scanners produce lists. Pentesters, bug bounty hunters, and red
                 teams need reproducible evidence and a write-up that holds up.
-                HackerAI keeps the whole engagement in one task, from first scan
+                BellaAI keeps the whole engagement in one task, from first scan
                 to final report.
               </p>
             </div>
@@ -202,20 +201,11 @@ export default function ProductPage() {
                 <MonitorCog className="size-5" aria-hidden="true" />
                 <h3 className="mt-5 text-xl font-medium">On Your Machine.</h3>
                 <p className="mt-3 leading-7 text-muted-foreground">
-                  HackerAI Desktop and the Local Agent CLI connect Agent mode to
+                  BellaAI Desktop and the Local Agent CLI connect Agent mode to
                   your own toolchain. Commands run with your user&apos;s
                   privileges and without container isolation, so use local mode
                   on a dedicated testing box you control.
                 </p>
-                <a
-                  href={LOCAL_AGENT_HELP_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={inlineLink}
-                >
-                  Local Agent setup guide
-                  <ExternalLink className="size-4" aria-hidden="true" />
-                </a>
               </article>
               <article className={card}>
                 <Cloud className="size-5" aria-hidden="true" />
@@ -241,7 +231,7 @@ export default function ProductPage() {
             <div className="max-w-2xl">
               <h2 className={sectionTitle}>Proof, Not Promises.</h2>
               <p className={sectionLead}>
-                HackerAI speeds up security work. It does not replace your
+                BellaAI speeds up security work. It does not replace your
                 judgment, your authorization, or your validation.
               </p>
             </div>
@@ -264,7 +254,7 @@ export default function ProductPage() {
             <div className="max-w-2xl">
               <h2 className={sectionTitle}>Web, Desktop, and Mobile.</h2>
               <p className={sectionLead}>
-                Start a task in the browser. Install HackerAI Desktop when you
+                Start a task in the browser. Install BellaAI Desktop when you
                 want to connect local tools. Pick up the same task on your phone
                 from the mobile web app.
               </p>
@@ -277,7 +267,7 @@ export default function ProductPage() {
             </div>
             <ZoomableImage
               src="/images/hackerai-mobile.png"
-              alt="HackerAI mobile web app running the same recon task on a phone"
+              alt="BellaAI mobile web app running the same recon task on a phone"
               width={780}
               height={1688}
               frameClassName="mx-auto max-w-[280px] rounded-xl border border-border bg-card shadow-xl shadow-black/30"

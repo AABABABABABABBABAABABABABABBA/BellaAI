@@ -15,7 +15,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { HackerAISVG } from "@/components/icons/hackerai-svg";
+import { BellaAISVG } from "@/components/icons/hackerai-svg";
 import { useGlobalState } from "../contexts/GlobalState";
 import { useChats } from "../hooks/useChats";
 import { useStartNewChat } from "../hooks/useStartNewChat";
@@ -213,22 +213,20 @@ const SidebarHeaderContentImpl: FC<SidebarHeaderContentImplProps> = ({
           href="/"
           data-testid="sidebar-home"
           onClick={isMobileOverlay ? handleCloseSidebar : undefined}
-          aria-label={
-            planLabel ? `HackerAI ${planLabel} home` : "HackerAI home"
-          }
+          aria-label={planLabel ? `BellaAI ${planLabel} home` : "BellaAI home"}
           className={`flex h-9 items-center rounded-lg text-sidebar-foreground no-underline outline-none hover:bg-transparent hover:no-underline focus-visible:underline focus-visible:underline-offset-4 ${
             showPlanWordmark ? "px-2.5" : "w-9 justify-center"
           }`}
         >
           {showPlanWordmark ? (
             <span className="flex min-w-0 items-baseline gap-1 whitespace-nowrap text-[18px] leading-6 font-semibold">
-              <span>HackerAI</span>
+              <span>BellaAI</span>
               <span className="font-medium text-sidebar-foreground/55">
                 {planLabel}
               </span>
             </span>
           ) : (
-            <HackerAISVG theme="dark" scale={isMobileOverlay ? 0.11 : 0.1} />
+            <BellaAISVG theme="dark" scale={isMobileOverlay ? 0.11 : 0.1} />
           )}
         </Link>
 

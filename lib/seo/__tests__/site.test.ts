@@ -44,14 +44,14 @@ describe("public site metadata", () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": "https://hackerai.co/#organization",
-      name: "HackerAI",
+      name: "BellaAI",
       url: "https://hackerai.co",
     });
     expect(WEBSITE_JSON_LD).toMatchObject({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "@id": "https://hackerai.co/#website",
-      name: "HackerAI",
+      name: "BellaAI",
       url: "https://hackerai.co",
       publisher: { "@id": "https://hackerai.co/#organization" },
     });
@@ -59,16 +59,16 @@ describe("public site metadata", () => {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "@id": "https://hackerai.co/product#software-application",
-      name: "HackerAI",
+      name: "BellaAI",
       url: "https://hackerai.co/product",
       publisher: { "@id": "https://hackerai.co/#organization" },
     });
     const expectedOffers = [
-      ["HackerAI Free", "0"],
-      ["HackerAI Pro", String(PRICING.pro.monthly)],
-      ["HackerAI Pro+", String(PRICING["pro-plus"].monthly)],
-      ["HackerAI Ultra", String(PRICING.ultra.monthly)],
-      ["HackerAI Team (per seat)", String(PRICING.team.monthly)],
+      ["BellaAI Free", "0"],
+      ["BellaAI Pro", String(PRICING.pro.monthly)],
+      ["BellaAI Pro+", String(PRICING["pro-plus"].monthly)],
+      ["BellaAI Ultra", String(PRICING.ultra.monthly)],
+      ["BellaAI Team (per seat)", String(PRICING.team.monthly)],
     ];
 
     for (const [name, price] of expectedOffers) {

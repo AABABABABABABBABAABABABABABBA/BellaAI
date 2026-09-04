@@ -71,8 +71,8 @@ export function SidebarProjects({
 
   const handleNewThread = (project: Doc<"projects">) => {
     if (project.folder_path && !desktopBridgeActive) {
-      toast.error("Connect HackerAI Desktop", {
-        description: `“${project.name}” is linked to a local folder. Open HackerAI Desktop and wait for it to connect before starting a task.`,
+      toast.error("Connect BellaAI Desktop", {
+        description: `“${project.name}” is linked to a local folder. Open BellaAI Desktop and wait for it to connect before starting a task.`,
       });
       return;
     }

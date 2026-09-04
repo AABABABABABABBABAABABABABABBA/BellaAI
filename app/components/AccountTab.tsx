@@ -232,14 +232,14 @@ const AccountTab = () => {
           <div>
             <div className="font-medium">
               {subscription === "ultra"
-                ? "HackerAI Ultra"
+                ? "BellaAI Ultra"
                 : subscription === "team"
-                  ? "HackerAI Team"
+                  ? "BellaAI Team"
                   : subscription === "pro-plus"
-                    ? "HackerAI Pro+"
+                    ? "BellaAI Pro+"
                     : subscription === "pro"
-                      ? "HackerAI Pro"
-                      : "Get HackerAI Pro"}
+                      ? "BellaAI Pro"
+                      : "Get BellaAI Pro"}
             </div>
             {renewalPrice && (
               <div className="mt-0.5 text-sm text-muted-foreground">

@@ -12,6 +12,7 @@ import {
   summarizePerplexityErrorBody,
 } from "./utils/perplexity";
 import { reportToolFailure } from "./tool-failure";
+import { fetchSearxngResults, SearxngApiError } from "./utils/searxng";
 import {
   PERPLEXITY_QUERY_MAX_LENGTH,
   createWebSearchToolSchema,
@@ -182,8 +183,34 @@ const normalizeSearchQueries = (
   return { queries: queries.slice(0, 3) };
 };
 
+const formatSearxngFailureForTool = (error: SearxngApiError): string => {
+  const statusText = error.statusText ? ` ${error.statusText}` : "";
+  return `Error performing web search: SearXNG search failed (HTTP ${error.status}${statusText}).`;
+};
+
+/**
+ * Free, self-hosted alternative to the Perplexity Search API. Set
+ * SEARXNG_URL to route web_search through a local SearXNG instance instead
+ * (no per-request cost). SearXNG has no built-in batch-query endpoint, so
+ * each query runs as its own request and results are merged afterward.
+ */
+const runSearxngSearch = async (
+  searxngUrl: string,
+  queries: string[],
+  maxResults: number,
+  abortSignal?: AbortSignal,
+) => {
+  const resultsPerQuery = await Promise.all(
+    queries.map((query) =>
+      fetchSearxngResults(searxngUrl, query, maxResults, abortSignal),
+    ),
+  );
+  return resultsPerQuery.flat();
+};
+
 export const createWebSearch = (context: ToolContext) => {
   const { userLocation, onToolCost } = context;
+  const searxngUrl = process.env.SEARXNG_URL;
 
   return tool({
     ...webSearchTool,
@@ -198,6 +225,35 @@ export const createWebSearch = (context: ToolContext) => {
         const { queries, error } = normalizeSearchQueries(rawQueries);
         if (error) {
           return error;
+        }
+
+        if (searxngUrl) {
+          try {
+            return await runSearxngSearch(searxngUrl, queries, 10, abortSignal);
+          } catch (searxngError) {
+            if (
+              searxngError instanceof Error &&
+              searxngError.name === "AbortError"
+            ) {
+              return "Error: Operation aborted";
+            }
+            if (searxngError instanceof SearxngApiError) {
+              reportToolFailure(context.onToolFailure, {
+                event: "web_search_provider_failed",
+                tool_name: "web_search",
+                provider: "searxng",
+                status: searxngError.status,
+                status_text: searxngError.statusText,
+                retryable: searxngError.retryable,
+                attempts: 1,
+                error_name: searxngError.name,
+                body_summary: "",
+              });
+              console.error("Web search tool error:", searxngError);
+              return formatSearxngFailureForTool(searxngError);
+            }
+            throw searxngError;
+          }
         }
 
         const searchBody = buildPerplexitySearchBody(

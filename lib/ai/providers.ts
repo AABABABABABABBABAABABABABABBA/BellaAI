@@ -1,5 +1,6 @@
 import { customProvider } from "ai";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { createOpenAI } from "@ai-sdk/openai";
 import type { ChatMode, SelectedModel } from "@/types/chat";
 import { openrouterAttributionHeaders } from "@/lib/ai/openrouter-attribution";
 
@@ -1190,6 +1191,46 @@ const openrouter = createOpenRouter({
 
 type OpenRouterInstance = typeof openrouter;
 
+// Local model backend: routes every provider key to a single Ollama model
+// via Ollama's built-in OpenAI-compatible endpoint, so no cloud API key or
+// spend is required. Enable with AI_PROVIDER=ollama in .env.local.
+// Note: HackerAI's system prompt + tool schemas are large (tens of thousands
+// of tokens); this only works reliably with a big num_ctx Modelfile and
+// enough RAM to hold that context, which small/local boxes may not have.
+const isOllamaProvider = process.env.AI_PROVIDER === "ollama";
+
+const ollama = createOpenAI({
+  baseURL: process.env.OLLAMA_BASE_URL ?? "http://localhost:11434/v1",
+  apiKey: process.env.OLLAMA_API_KEY ?? "ollama",
+});
+
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL ?? "llama3.1:8b";
+
+// Every HackerAI provider key normally maps to a specific OpenRouter model
+// slug (see buildProviderMap below). In Ollama mode there is only one local
+// model, so every key collapses onto it; the slug argument is ignored.
+const routeToLocalModel = ((_slug: string) =>
+  ollama(OLLAMA_MODEL)) as unknown as OpenRouterInstance;
+
+// Cloudflare Workers AI backend: hosted inference (free tier), so it avoids
+// both cloud LLM spend AND the local RAM/context ceiling that local Ollama
+// hits with this app's large system prompt. Enable with AI_PROVIDER=cloudflare
+// plus CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN (Workers AI scope).
+const isCloudflareProvider = process.env.AI_PROVIDER === "cloudflare";
+
+const cloudflareWorkersAi = createOpenAI({
+  baseURL: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID ?? ""}/ai/v1`,
+  apiKey: process.env.CLOUDFLARE_API_TOKEN ?? "",
+});
+
+// @cf/meta/llama-3.3-70b-instruct-fp8-fast supports tool calling and a
+// 24K-token context, comfortably fitting this app's system prompt + tools.
+const CLOUDFLARE_MODEL =
+  process.env.CLOUDFLARE_MODEL ?? "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+
+const routeToCloudflareModel = ((_slug: string) =>
+  cloudflareWorkersAi(CLOUDFLARE_MODEL)) as unknown as OpenRouterInstance;
+
 export const KIMI_K3_SLUG = "moonshotai/kimi-k3";
 export const GLM_5_2_SLUG = "z-ai/glm-5.2";
 export const GLM_5_3_SLUG = "z-ai/glm-5.3";
@@ -1266,7 +1307,13 @@ const buildProviderMap = (
     "auxiliary-vision-model": or(AUXILIARY_VISION_SLUG),
   }) as Record<string, any>;
 
-const baseProviders = buildProviderMap(openrouter);
+const baseProviders = buildProviderMap(
+  isCloudflareProvider
+    ? routeToCloudflareModel
+    : isOllamaProvider
+      ? routeToLocalModel
+      : openrouter,
+);
 
 export type ModelName = keyof typeof baseProviders;
 

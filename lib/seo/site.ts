@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { PRICING } from "@/lib/pricing/config";
 
-export const SITE_NAME = "HackerAI";
+export const SITE_NAME = "BellaAI";
 export const SITE_URL = "https://hackerai.co";
 export const SITE_DESCRIPTION =
-  "HackerAI is an AI agent for penetration testing that helps security practitioners investigate targets, use terminal and browser tools, analyze findings, and prepare reports.";
+  "BellaAI is an AI agent for penetration testing that helps security practitioners investigate targets, use terminal and browser tools, analyze findings, and prepare reports.";
 export const SITE_LOGO_URL = `${SITE_URL}/icon-512x512.png`;
 export const SITE_SCREENSHOT_URL = `${SITE_URL}/images/hackerai-workspace.png`;
 export const GITHUB_URL = "https://github.com/hackerai-tech/hackerai";
@@ -51,7 +51,7 @@ export const ORGANIZATION_JSON_LD = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  legalName: "HackerAI LLC",
+  legalName: "BellaAI LLC",
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
@@ -76,10 +76,10 @@ export const WEBSITE_JSON_LD = {
 
 const PAID_PLAN_OFFERS = (
   [
-    ["pro", "HackerAI Pro"],
-    ["pro-plus", "HackerAI Pro+"],
-    ["ultra", "HackerAI Ultra"],
-    ["team", "HackerAI Team (per seat)"],
+    ["pro", "BellaAI Pro"],
+    ["pro-plus", "BellaAI Pro+"],
+    ["ultra", "BellaAI Ultra"],
+    ["team", "BellaAI Team (per seat)"],
   ] as const
 ).map(([key, name]) => ({
   "@type": "Offer",
@@ -113,7 +113,7 @@ export const SOFTWARE_APPLICATION_JSON_LD = {
   offers: [
     {
       "@type": "Offer",
-      name: "HackerAI Free",
+      name: "BellaAI Free",
       price: "0",
       priceCurrency: "USD",
       url: `${SITE_URL}/pricing`,

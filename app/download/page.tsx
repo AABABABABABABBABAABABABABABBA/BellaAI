@@ -4,20 +4,20 @@ import { canonicalMetadata } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   ...canonicalMetadata("/download"),
-  title: "Download | HackerAI",
+  title: "Download | BellaAI",
   description:
-    "Download HackerAI for macOS, Windows, Linux, iOS, and Android. AI-powered penetration testing at your fingertips.",
+    "Download BellaAI for macOS, Windows, Linux, iOS, and Android. AI-powered penetration testing at your fingertips.",
   openGraph: {
-    title: "Download HackerAI",
+    title: "Download BellaAI",
     description:
-      "Download HackerAI for macOS, Windows, Linux, iOS, and Android. AI-powered penetration testing at your fingertips.",
+      "Download BellaAI for macOS, Windows, Linux, iOS, and Android. AI-powered penetration testing at your fingertips.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Download HackerAI",
+    title: "Download BellaAI",
     description:
-      "Download HackerAI for macOS, Windows, Linux, iOS, and Android. AI-powered penetration testing at your fingertips.",
+      "Download BellaAI for macOS, Windows, Linux, iOS, and Android. AI-powered penetration testing at your fingertips.",
   },
 };
 

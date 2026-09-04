@@ -1,10 +1,7 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
-
 import Header from "@/app/components/Header";
 import { PublicSiteFooter } from "@/components/public/PublicSiteFooter";
-import { LOCAL_AGENT_HELP_URL } from "@/lib/seo/site";
 import { DownloadSection, useDetectedPlatform } from "./DownloadSection";
 import { downloadLinks } from "./constants";
 import { AppleIcon, WindowsIcon, LinuxIcon } from "./icons";
@@ -19,24 +16,13 @@ function DownloadContent() {
       <div className="space-y-8">
         <div className="text-center">
           <h1 className="text-5xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-6xl">
-            {isMobile ? "Install HackerAI" : "Download HackerAI"}
+            {isMobile ? "Install BellaAI" : "Download BellaAI"}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-muted-foreground">
             {isMobile
-              ? "Add HackerAI to your home screen to open it like a native app."
+              ? "Add BellaAI to your home screen to open it like a native app."
               : "Install the desktop app when you want Agent mode to run tools on your own machine. Everything else works in the browser."}
           </p>
-          {!isMobile && (
-            <a
-              href={LOCAL_AGENT_HELP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-sm text-sm font-medium text-foreground underline underline-offset-4 hover:text-foreground/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-            >
-              Local Agent setup guide
-              <ExternalLink className="size-4" aria-hidden="true" />
-            </a>
-          )}
         </div>
 
         <DownloadSection />

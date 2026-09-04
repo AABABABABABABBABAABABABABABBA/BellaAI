@@ -52,7 +52,7 @@ describe("AcquisitionSurvey", () => {
     render(<AcquisitionSurvey eligible activationMode="agent" />);
 
     const firstHeard = await screen.findByLabelText(
-      "Where did you first hear about HackerAI?",
+      "Where did you first hear about BellaAI?",
     );
     const mainReason = screen.getByLabelText(
       "What was your main reason for trying it?",
@@ -96,9 +96,7 @@ describe("AcquisitionSurvey", () => {
       render(<AcquisitionSurvey eligible activationMode="ask" />);
 
       fireEvent.change(
-        await screen.findByLabelText(
-          "Where did you first hear about HackerAI?",
-        ),
+        await screen.findByLabelText("Where did you first hear about BellaAI?"),
         { target: { value: "ai_assistant" } },
       );
       fireEvent.change(

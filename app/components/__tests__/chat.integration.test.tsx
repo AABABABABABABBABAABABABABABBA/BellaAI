@@ -496,7 +496,7 @@ describe("Chat Component Integration", () => {
         approvalId: "approval-1",
         toolCallId: "tool-1",
         operation: "terminal_execute",
-        title: "Allow HackerAI to run this terminal command?",
+        title: "Allow BellaAI to run this terminal command?",
         target: "ping -c 4 hackerone.com",
         justification: "Check whether the target host is reachable.",
         prefixRule: ["ping", "-c", "4"],
@@ -691,7 +691,7 @@ describe("Chat Component Integration", () => {
         await screen.findByTestId("computer-sidebar-container"),
       ).toHaveAttribute("data-layout", "overlay");
       expect(
-        screen.getByRole("dialog", { name: "HackerAI’s Computer" }),
+        screen.getByRole("dialog", { name: "BellaAI’s Computer" }),
       ).toBeInTheDocument();
       expect(screen.getByTestId("computer-sidebar")).toBeInTheDocument();
 
@@ -710,7 +710,7 @@ describe("Chat Component Integration", () => {
       fireEvent.keyDown(document, { key: "Escape" });
       await waitFor(() => {
         expect(
-          screen.queryByRole("dialog", { name: "HackerAI’s Computer" }),
+          screen.queryByRole("dialog", { name: "BellaAI’s Computer" }),
         ).not.toBeInTheDocument();
       });
       expect(trigger).toHaveFocus();

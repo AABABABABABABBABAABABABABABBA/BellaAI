@@ -28,20 +28,20 @@ import {
 
 export const metadata: Metadata = {
   ...canonicalMetadata("/trust"),
-  title: "Security & Trust | HackerAI",
+  title: "Security & Trust | BellaAI",
   description:
-    "How HackerAI handles your data: AI providers, sandbox execution, storage, billing, account security, and subprocessors.",
+    "How BellaAI handles your data: AI providers, sandbox execution, storage, billing, account security, and subprocessors.",
   openGraph: {
-    title: "Security & Trust | HackerAI",
+    title: "Security & Trust | BellaAI",
     description:
-      "How HackerAI handles your data: AI providers, sandbox execution, storage, billing, account security, and subprocessors.",
+      "How BellaAI handles your data: AI providers, sandbox execution, storage, billing, account security, and subprocessors.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Security & Trust | HackerAI",
+    title: "Security & Trust | BellaAI",
     description:
-      "How HackerAI handles your data: AI providers, sandbox execution, storage, billing, account security, and subprocessors.",
+      "How BellaAI handles your data: AI providers, sandbox execution, storage, billing, account security, and subprocessors.",
   },
 };
 
@@ -192,7 +192,7 @@ function TrustContent() {
             Security &amp; Trust
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-            HackerAI is an AI agent for penetration testing and security work.
+            BellaAI is an AI agent for penetration testing and security work.
             This page describes the data we process, where agent code runs, and
             the services we rely on to operate.
           </p>
@@ -206,7 +206,7 @@ function TrustContent() {
 
         <div className="space-y-6">
           <Section icon={Database} title="Data we process">
-            <p>Depending on how you use HackerAI, the service processes:</p>
+            <p>Depending on how you use BellaAI, the service processes:</p>
             <CheckList
               items={[
                 "Prompts and task messages you send to the agent",
@@ -362,9 +362,9 @@ function TrustContent() {
           <div className="grid gap-6 md:grid-cols-2">
             <Section icon={Bug} title="Responsible disclosure">
               <p>
-                Found a security vulnerability in HackerAI? Report it through
-                the <InlineLink href={HELP_CENTER_URL}>help center</InlineLink>.
-                We review all good-faith reports. We don&apos;t run a paid bug
+                Found a security vulnerability in BellaAI? Report it through the{" "}
+                <InlineLink href={HELP_CENTER_URL}>help center</InlineLink>. We
+                review all good-faith reports. We don&apos;t run a paid bug
                 bounty program at this time.
               </p>
             </Section>
@@ -384,7 +384,7 @@ function TrustContent() {
           <div className="grid gap-6 md:grid-cols-2">
             <Section icon={Code} title="Source code">
               <p>
-                HackerAI is developed in the open. The full application source
+                BellaAI is developed in the open. The full application source
                 code is public on{" "}
                 <InlineLink href="https://github.com/hackerai-tech/hackerai">
                   GitHub
@@ -397,7 +397,7 @@ function TrustContent() {
 
             <Section icon={BadgeCheck} title="Compliance">
               <p>
-                HackerAI doesn&apos;t currently hold SOC 2, ISO 27001, or other
+                BellaAI doesn&apos;t currently hold SOC 2, ISO 27001, or other
                 third-party certifications. The service is offered in beta, as
                 described in our{" "}
                 <InlineLink href="/privacy-policy">Privacy Policy</InlineLink>{" "}
@@ -437,7 +437,7 @@ function TrustContent() {
             ))}
           </div>
           <p className="mt-8 text-center text-xs text-muted-foreground">
-            Questions about security at HackerAI? Contact us through the{" "}
+            Questions about security at BellaAI? Contact us through the{" "}
             <InlineLink href={HELP_CENTER_URL}>help center</InlineLink>.
           </p>
         </footer>

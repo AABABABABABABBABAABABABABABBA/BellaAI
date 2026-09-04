@@ -42,8 +42,8 @@ const geistMono = Geist_Mono({
 });
 
 const APP_NAME = SITE_NAME;
-const APP_DEFAULT_TITLE = "HackerAI - AI-Powered Penetration Testing Assistant";
-const APP_TITLE_TEMPLATE = "%s | HackerAI";
+const APP_DEFAULT_TITLE = "BellaAI - AI-Powered Penetration Testing Assistant";
+const APP_TITLE_TEMPLATE = "%s | BellaAI";
 const APP_DESCRIPTION = SITE_DESCRIPTION;
 
 export const metadata: Metadata = {
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
         url: "https://hackerai.co/icon-512x512.png",
         width: 512,
         height: 512,
-        alt: "HackerAI",
+        alt: "BellaAI",
       },
     ],
   },
@@ -103,7 +103,7 @@ export const metadata: Metadata = {
         url: "https://hackerai.co/icon-512x512.png",
         width: 512,
         height: 512,
-        alt: "HackerAI",
+        alt: "BellaAI",
       },
     ],
   },

@@ -10,7 +10,7 @@ let mockIsTauri = false;
 let mockDetectedPlatform = {
   platform: "macos",
   displayName: "macOS",
-  downloadUrl: "https://example.com/HackerAI.dmg",
+  downloadUrl: "https://example.com/BellaAI.dmg",
 };
 
 jest.mock("@/lib/analytics/client", () => ({
@@ -42,7 +42,7 @@ describe("FreeAskComputerActivation", () => {
     mockDetectedPlatform = {
       platform: "macos",
       displayName: "macOS",
-      downloadUrl: "https://example.com/HackerAI.dmg",
+      downloadUrl: "https://example.com/BellaAI.dmg",
     };
     mockCaptureAuthenticatedEvent.mockClear();
     mockCaptureUpgradeCtaImpression.mockClear();
@@ -53,7 +53,7 @@ describe("FreeAskComputerActivation", () => {
     render(<FreeAskComputerActivation />);
 
     const trigger = screen.getByRole("button", {
-      name: "Set up HackerAI Desktop for Agent mode",
+      name: "Set up BellaAI Desktop for Agent mode",
     });
     expect(trigger).toBeInTheDocument();
     expect(trigger).toHaveClass(
@@ -70,7 +70,7 @@ describe("FreeAskComputerActivation", () => {
     );
     expect(trigger.querySelectorAll("svg")).toHaveLength(1);
     const label = trigger.querySelector("span");
-    expect(label).toHaveTextContent("HackerAI Desktop");
+    expect(label).toHaveTextContent("BellaAI Desktop");
     expect(label).toHaveClass("hidden", "md:inline");
     expect(label).toHaveAttribute("translate", "no");
     expect(label).not.toHaveClass("text-muted-foreground");
@@ -93,7 +93,7 @@ describe("FreeAskComputerActivation", () => {
 
     await user.click(
       screen.getByRole("button", {
-        name: "Set up HackerAI Desktop for Agent mode",
+        name: "Set up BellaAI Desktop for Agent mode",
       }),
     );
 
@@ -102,7 +102,7 @@ describe("FreeAskComputerActivation", () => {
     ).toBeInTheDocument();
     expect(
       screen.queryByText(
-        "Use a desktop computer to download HackerAI Desktop for macOS, Windows, or Linux.",
+        "Use a desktop computer to download BellaAI Desktop for macOS, Windows, or Linux.",
       ),
     ).not.toBeInTheDocument();
     expect(
@@ -128,12 +128,9 @@ describe("FreeAskComputerActivation", () => {
     );
 
     const download = screen.getByTestId("free-ask-computer-download");
-    expect(download).toHaveAttribute(
-      "href",
-      "https://example.com/HackerAI.dmg",
-    );
+    expect(download).toHaveAttribute("href", "https://example.com/BellaAI.dmg");
     expect(download).toHaveAttribute("target", "_blank");
-    expect(download).toHaveTextContent("Download HackerAI Desktop");
+    expect(download).toHaveTextContent("Download BellaAI Desktop");
     expect(download).not.toHaveClass("hidden");
 
     await user.click(download);
@@ -150,7 +147,7 @@ describe("FreeAskComputerActivation", () => {
 
     await user.click(
       screen.getByRole("button", {
-        name: "Set up HackerAI Desktop for Agent mode",
+        name: "Set up BellaAI Desktop for Agent mode",
       }),
     );
     await user.click(screen.getByTestId("free-ask-cloud-upgrade"));
@@ -173,7 +170,7 @@ describe("FreeAskComputerActivation", () => {
 
     await user.click(
       screen.getByRole("button", {
-        name: "Set up HackerAI Desktop for Agent mode",
+        name: "Set up BellaAI Desktop for Agent mode",
       }),
     );
 
@@ -182,7 +179,7 @@ describe("FreeAskComputerActivation", () => {
         (_, element) =>
           element?.tagName === "P" &&
           element.textContent ===
-            "Use a desktop computer to download HackerAI Desktop for macOS, Windows, or Linux.",
+            "Use a desktop computer to download BellaAI Desktop for macOS, Windows, or Linux.",
       ),
     ).toBeInTheDocument();
     expect(
@@ -190,14 +187,14 @@ describe("FreeAskComputerActivation", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("does not render inside HackerAI Desktop", () => {
+  it("does not render inside BellaAI Desktop", () => {
     mockIsTauri = true;
 
     render(<FreeAskComputerActivation />);
 
     expect(
       screen.queryByRole("button", {
-        name: "Set up HackerAI Desktop for Agent mode",
+        name: "Set up BellaAI Desktop for Agent mode",
       }),
     ).not.toBeInTheDocument();
     expect(mockCaptureAuthenticatedEvent).not.toHaveBeenCalled();

@@ -2197,7 +2197,7 @@ pub fn run() {
                 }
             });
 
-            log::info!("HackerAI Desktop initialized");
+            log::info!("BellaAI Desktop initialized");
             Ok(())
         })
         .build(tauri::generate_context!())

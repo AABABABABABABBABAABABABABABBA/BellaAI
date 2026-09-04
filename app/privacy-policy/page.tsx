@@ -4,20 +4,20 @@ import { canonicalMetadata } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   ...canonicalMetadata("/privacy-policy"),
-  title: "Privacy Policy | HackerAI",
+  title: "Privacy Policy | BellaAI",
   description:
-    "Privacy Policy and data handling practices for HackerAI services.",
+    "Privacy Policy and data handling practices for BellaAI services.",
   openGraph: {
-    title: "Privacy Policy | HackerAI",
+    title: "Privacy Policy | BellaAI",
     description:
-      "Privacy Policy and data handling practices for HackerAI services.",
+      "Privacy Policy and data handling practices for BellaAI services.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Privacy Policy | HackerAI",
+    title: "Privacy Policy | BellaAI",
     description:
-      "Privacy Policy and data handling practices for HackerAI services.",
+      "Privacy Policy and data handling practices for BellaAI services.",
   },
 };
 
@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
     <div className="px-4 py-8 pb-16 md:px-0">
       <main className="container mx-auto max-w-2xl rounded-md border bg-card px-4 py-8 shadow-lg sm:px-8">
         <h1 className="text-center text-3xl font-semibold text-card-foreground">
-          HackerAI Privacy Policy
+          BellaAI Privacy Policy
         </h1>
 
         <p className="mt-3 text-center text-sm text-muted-foreground">
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
 
         <div className="mt-8 space-y-7 text-base leading-relaxed text-card-foreground sm:text-lg">
           <p>
-            This Privacy Policy explains how HackerAI LLC (&quot;HackerAI,&quot;
+            This Privacy Policy explains how BellaAI LLC (&quot;BellaAI,&quot;
             &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) handles personal
             information when you use our websites, applications, and related
             services (the &quot;Service&quot;).
@@ -171,7 +171,7 @@ export default function PrivacyPolicyPage() {
             <p className="mt-2">
               Browser &quot;Do Not Track&quot; signals are not standardized, and
               the Service does not currently respond to them. You can use
-              available browser controls and HackerAI&apos;s Cookie settings to
+              available browser controls and BellaAI&apos;s Cookie settings to
               manage optional browser storage where offered.
             </p>
           </section>
@@ -208,7 +208,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="mb-2 text-xl font-semibold">Contact us</h2>
             <p>
-              HackerAI LLC is responsible for the personal information described
+              BellaAI LLC is responsible for the personal information described
               in this policy. For privacy questions or requests, contact us
               through our{" "}
               <a

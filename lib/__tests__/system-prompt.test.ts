@@ -581,7 +581,7 @@ Commands run directly on the host OS "workstation" without Docker isolation. Be 
       "Do not use host.docker.internal as a shortcut to the user's host from the cloud sandbox",
     );
     expect(prompt).toContain(
-      "use the HackerAI Desktop App, Remote Control, or a user-provided reachable tunnel URL",
+      "use the BellaAI Desktop App, Remote Control, or a user-provided reachable tunnel URL",
     );
     expect(prompt).toContain(
       "Do not invent host aliases or imply the cloud sandbox can directly reach private/internal assets",
@@ -620,7 +620,7 @@ Commands run directly on the host OS "workstation" without Docker isolation. Be 
       "Never treat a successful low-level connection or implausible scan output as confirmation that a port is open",
     );
     expect(cloudPrompt).toContain(
-      "recommend selecting the HackerAI Desktop App or a Remote Control connection",
+      "recommend selecting the BellaAI Desktop App or a Remote Control connection",
     );
     expect(cloudPrompt).toContain(
       "Narrow application-level checks remain appropriate when they verify expected protocol behavior",
@@ -737,10 +737,10 @@ Commands run directly on the host OS "workstation" without Docker isolation. Be 
 
       expect(prompt).toContain("<local_machine_access>");
       expect(prompt).toContain(
-        "Switching to Agent Mode or upgrading does not automatically connect HackerAI to the user's computer.",
+        "Switching to Agent Mode or upgrading does not automatically connect BellaAI to the user's computer.",
       );
       expect(prompt).toContain(
-        "connect it through the HackerAI Desktop App or Remote Control",
+        "connect it through the BellaAI Desktop App or Remote Control",
       );
       expect(prompt).toContain(
         "Local Agent access is available on every plan, including Free.",

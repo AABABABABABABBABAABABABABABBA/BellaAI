@@ -23,7 +23,7 @@ const plans = [
   {
     key: "free",
     name: "Free",
-    description: "Try HackerAI",
+    description: "Try BellaAI",
     features: freeFeatures,
     featureHeader: PLAN_HEADERS.free,
   },

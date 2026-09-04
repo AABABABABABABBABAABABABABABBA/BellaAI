@@ -80,9 +80,7 @@ describe("project management dialogs", () => {
       screen.getByText("/Users/hackerai/targets/acme"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(
-        "Open HackerAI Desktop to change or remove this folder.",
-      ),
+      screen.getByText("Open BellaAI Desktop to change or remove this folder."),
     ).toBeInTheDocument();
     expect(
       screen.queryByRole("button", { name: "Remove linked folder" }),
