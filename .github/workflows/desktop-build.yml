@@ -514,8 +514,8 @@ jobs:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
           if [ -z "$APPLE_ID" ] || [ -z "$APPLE_PASSWORD" ] || [ -z "$APPLE_TEAM_ID" ]; then
-            echo "::error::Notarization credentials not configured!"
-            exit 1
+            echo "No notarization credentials configured, skipping notarization"
+            exit 0
           fi
 
           echo "Notarizing universal DMG..."
