@@ -36,7 +36,10 @@ import {
   type DesktopBridgeStatus,
 } from "@/app/hooks/useSandboxPreference";
 import { isTauriEnvironment } from "@/app/hooks/useTauri";
-import { resolveSubscriptionTier } from "@/lib/auth/entitlements";
+import {
+  applyAdminTierOverride,
+  resolveSubscriptionTier,
+} from "@/lib/auth/entitlements";
 import { clearSharedToken, setSharedToken } from "@/lib/auth/shared-token";
 import { chatSidebarStorage } from "@/lib/utils/sidebar-storage";
 import { useMutation, useQuery } from "convex/react";
@@ -270,9 +273,15 @@ const GlobalStateProviderInner: React.FC<GlobalStateProviderProps> = ({
   const [entitlementRefreshRetryNonce, setEntitlementRefreshRetryNonce] =
     useState(0);
   const subscriptionFromEntitlements = useMemo<SubscriptionTier | null>(() => {
-    if (!Array.isArray(entitlements)) return null;
-    return resolveSubscriptionTier(entitlements);
-  }, [entitlements]);
+    const baseTier = Array.isArray(entitlements)
+      ? resolveSubscriptionTier(entitlements)
+      : null;
+    const overridden = applyAdminTierOverride(baseTier ?? "free", user?.email);
+    // Preserve the original "unresolved" signal (null) for admin-override
+    // misses so downstream effects still wait on real entitlements data,
+    // but let the override win even when entitlements haven't loaded yet.
+    return baseTier === null && overridden === "free" ? null : overridden;
+  }, [entitlements, user?.email]);
   const refreshAuthTokenAfterEntitlementRefresh = useCallback(async () => {
     clearSharedToken();
 

@@ -5,6 +5,7 @@ import {
   isRateLimitError,
 } from "@/lib/api/response";
 import {
+  applyAdminTierOverride,
   parseEntitlements,
   resolveSubscriptionTier,
 } from "@/lib/auth/entitlements";
@@ -66,7 +67,10 @@ export async function GET(req: NextRequest) {
     const { sealedSession, entitlements } = refreshResult as any;
 
     const allEntitlements = parseEntitlements(entitlements);
-    const subscription = resolveSubscriptionTier(allEntitlements);
+    const subscription = applyAdminTierOverride(
+      resolveSubscriptionTier(allEntitlements),
+      authResult.authenticated ? authResult.user.email : undefined,
+    );
 
     // Create response with entitlements and normalized subscription tier
     const response = json({

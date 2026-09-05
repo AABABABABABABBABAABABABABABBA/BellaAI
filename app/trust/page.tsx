@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  Activity,
   BadgeCheck,
   Bot,
   Bug,
@@ -19,9 +18,8 @@ import {
 import Header from "@/app/components/Header";
 import { PublicSiteFooter } from "@/components/public/PublicSiteFooter";
 import {
-  HELP_CENTER_URL as DEFAULT_HELP_CENTER_URL,
+  GITHUB_URL,
   PUBLIC_PAGE_LAST_MODIFIED,
-  STATUS_PAGE_URL,
   canonicalMetadata,
   formatPublicPageDate,
 } from "@/lib/seo/site";
@@ -46,9 +44,6 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-static";
-
-const HELP_CENTER_URL =
-  process.env.NEXT_PUBLIC_HELP_CENTER_URL || DEFAULT_HELP_CENTER_URL;
 
 interface Subprocessor {
   name: string;
@@ -362,39 +357,25 @@ function TrustContent() {
           <div className="grid gap-6 md:grid-cols-2">
             <Section icon={Bug} title="Responsible disclosure">
               <p>
-                Found a security vulnerability in BellaAI? Report it through the{" "}
-                <InlineLink href={HELP_CENTER_URL}>help center</InlineLink>. We
-                review all good-faith reports. We don&apos;t run a paid bug
-                bounty program at this time.
+                Found a security vulnerability in BellaAI? Report it by opening
+                an issue on <InlineLink href={GITHUB_URL}>GitHub</InlineLink>.
+                We review all good-faith reports.
               </p>
             </Section>
 
-            <Section icon={Activity} title="Incident communication">
+            <Section icon={Code} title="Source code">
               <p>
-                For availability updates and scheduled maintenance, check the{" "}
-                <InlineLink href={STATUS_PAGE_URL}>
-                  public status page
-                </InlineLink>
-                . If an incident affects your data, we notify affected users
-                through the service and the help center.
+                BellaAI is developed in the open. The full application source
+                code is public on{" "}
+                <InlineLink href={GITHUB_URL}>GitHub</InlineLink>, including
+                every change we ship. You can review how prompts, files, and
+                sandbox sessions are handled directly in the code rather than
+                relying on this page alone.
               </p>
             </Section>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <Section icon={Code} title="Source code">
-              <p>
-                BellaAI is developed in the open. The full application source
-                code is public on{" "}
-                <InlineLink href="https://github.com/hackerai-tech/hackerai">
-                  GitHub
-                </InlineLink>
-                , including every change we ship. You can review how prompts,
-                files, and sandbox sessions are handled directly in the code
-                rather than relying on this page alone.
-              </p>
-            </Section>
-
             <Section icon={BadgeCheck} title="Compliance">
               <p>
                 BellaAI doesn&apos;t currently hold SOC 2, ISO 27001, or other
@@ -418,8 +399,7 @@ function TrustContent() {
             {[
               { href: "/privacy-policy", label: "Privacy Policy" },
               { href: "/terms-of-service", label: "Terms of Service" },
-              { href: HELP_CENTER_URL, label: "Help Center" },
-              { href: STATUS_PAGE_URL, label: "Status page" },
+              { href: GITHUB_URL, label: "GitHub" },
             ].map((link) => (
               <a
                 key={link.href}
@@ -437,8 +417,8 @@ function TrustContent() {
             ))}
           </div>
           <p className="mt-8 text-center text-xs text-muted-foreground">
-            Questions about security at BellaAI? Contact us through the{" "}
-            <InlineLink href={HELP_CENTER_URL}>help center</InlineLink>.
+            Questions about security at BellaAI? Open an issue on{" "}
+            <InlineLink href={GITHUB_URL}>GitHub</InlineLink>.
           </p>
         </footer>
       </div>

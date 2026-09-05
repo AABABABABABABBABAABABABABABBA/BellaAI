@@ -290,7 +290,7 @@ const getRouteKind = (currentUrl: unknown): string | undefined => {
   if (typeof currentUrl !== "string") return undefined;
 
   try {
-    const { pathname } = new URL(currentUrl, "https://hackerai.co");
+    const { pathname } = new URL(currentUrl, "https://bellaai.snore.pw");
     if (pathname === "/") return "home";
     if (pathname.startsWith("/c/")) return "chat";
     if (pathname.startsWith("/share/")) return "share";

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { canonicalMetadata } from "@/lib/seo/site";
+import { GITHUB_URL, canonicalMetadata } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   ...canonicalMetadata("/privacy-policy"),
@@ -210,14 +210,14 @@ export default function PrivacyPolicyPage() {
             <p>
               BellaAI LLC is responsible for the personal information described
               in this policy. For privacy questions or requests, contact us
-              through our{" "}
+              through{" "}
               <a
-                href="https://help.hackerai.co/en/"
+                href={GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={linkClassName}
               >
-                help center
+                GitHub
               </a>
               .
             </p>

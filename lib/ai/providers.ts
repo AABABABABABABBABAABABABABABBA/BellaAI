@@ -1231,6 +1231,32 @@ const CLOUDFLARE_MODEL =
 const routeToCloudflareModel = ((_slug: string) =>
   cloudflareWorkersAi(CLOUDFLARE_MODEL)) as unknown as OpenRouterInstance;
 
+// Generic hosted OpenAI-compatible backend: one slot that covers any
+// free-tier provider speaking the OpenAI chat-completions format (Mistral,
+// Groq, Cerebras, GitHub Models, Cohere's compatibility API, etc). Enable
+// with AI_PROVIDER=custom plus CUSTOM_PROVIDER_BASE_URL, CUSTOM_PROVIDER_API_KEY,
+// and CUSTOM_PROVIDER_MODEL. Verified base URLs (OpenAI SDK baseURL values):
+//   Mistral:          https://api.mistral.ai/v1
+//   Groq:              https://api.groq.com/openai/v1
+//   Cerebras:          https://api.cerebras.ai/v1
+//   GitHub Models:     https://models.github.ai/inference
+//   Cohere:            https://api.cohere.ai/compatibility/v1
+//   Google Gemini:     https://generativelanguage.googleapis.com/v1beta/openai/
+const isCustomProvider = process.env.AI_PROVIDER === "custom";
+
+const customOpenAiCompatible = createOpenAI({
+  baseURL: process.env.CUSTOM_PROVIDER_BASE_URL ?? "",
+  apiKey: process.env.CUSTOM_PROVIDER_API_KEY ?? "",
+});
+
+const CUSTOM_PROVIDER_MODEL =
+  process.env.CUSTOM_PROVIDER_MODEL ?? "mistral-large-latest";
+
+const routeToCustomModel = ((_slug: string) =>
+  customOpenAiCompatible(
+    CUSTOM_PROVIDER_MODEL,
+  )) as unknown as OpenRouterInstance;
+
 export const KIMI_K3_SLUG = "moonshotai/kimi-k3";
 export const GLM_5_2_SLUG = "z-ai/glm-5.2";
 export const GLM_5_3_SLUG = "z-ai/glm-5.3";
@@ -1308,11 +1334,13 @@ const buildProviderMap = (
   }) as Record<string, any>;
 
 const baseProviders = buildProviderMap(
-  isCloudflareProvider
-    ? routeToCloudflareModel
-    : isOllamaProvider
-      ? routeToLocalModel
-      : openrouter,
+  isCustomProvider
+    ? routeToCustomModel
+    : isCloudflareProvider
+      ? routeToCloudflareModel
+      : isOllamaProvider
+        ? routeToLocalModel
+        : openrouter,
 );
 
 export type ModelName = keyof typeof baseProviders;

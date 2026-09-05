@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CreditCard, ExternalLink, ShieldCheck, Undo2 } from "lucide-react";
+import { CreditCard, ShieldCheck, Undo2 } from "lucide-react";
 
 import Header from "@/app/components/Header";
 import { PublicSiteFooter } from "@/components/public/PublicSiteFooter";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/button";
 import {
-  CANCELLATION_HELP_URL,
-  EXTRA_USAGE_HELP_URL,
-  HELP_CENTER_URL,
-  REFUND_HELP_URL,
   SOFTWARE_APPLICATION_JSON_LD,
   canonicalMetadata,
 } from "@/lib/seo/site";
@@ -37,9 +33,6 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-static";
-
-const externalLinkClassName =
-  "inline-flex items-center gap-2 rounded-sm text-sm font-medium text-foreground underline underline-offset-4 hover:text-foreground/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
 
 export default function PricingPage() {
   return (
@@ -91,15 +84,6 @@ export default function PricingPage() {
                   charged separately from the subscription, and is off until you
                   enable it in Settings.
                 </p>
-                <a
-                  href={EXTRA_USAGE_HELP_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`mt-5 ${externalLinkClassName}`}
-                >
-                  Extra Usage guide
-                  <ExternalLink className="size-4" aria-hidden="true" />
-                </a>
               </div>
               <div>
                 <Undo2 className="size-5" aria-hidden="true" />
@@ -111,35 +95,6 @@ export default function PricingPage() {
                   continues until the end of the current billing period. Refund
                   eligibility depends on your location and timing.
                 </p>
-                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-                  <a
-                    href={CANCELLATION_HELP_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={externalLinkClassName}
-                  >
-                    Cancellation guide
-                    <ExternalLink className="size-4" aria-hidden="true" />
-                  </a>
-                  <a
-                    href={REFUND_HELP_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={externalLinkClassName}
-                  >
-                    Refund policy
-                    <ExternalLink className="size-4" aria-hidden="true" />
-                  </a>
-                </div>
-                <a
-                  href={HELP_CENTER_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 inline-flex items-center gap-1 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-                >
-                  All billing help
-                  <ExternalLink className="size-3.5" aria-hidden="true" />
-                </a>
               </div>
             </div>
           </div>

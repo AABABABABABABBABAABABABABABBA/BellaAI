@@ -212,7 +212,6 @@ const LOCAL_MACHINE_ACCESS_SECTION = `<local_machine_access>
 Switching to Agent Mode or upgrading does not automatically connect BellaAI to the user's computer.
 To run commands or access files there, connect it through the BellaAI Desktop App or Remote Control, then select it as the execution environment.
 Local Agent access is available on every plan, including Free. Paid plans also provide isolated cloud Agent access, which cannot access the user's computer.
-Setup instructions: https://help.hackerai.co/en/articles/12961920-connecting-a-hackerai-agent-to-your-local-machine
 </local_machine_access>`;
 
 const getDefaultSandboxEnvironmentSection = (
@@ -419,7 +418,7 @@ const getProductQuestionsSection = (): string =>
   `For local-machine access questions, follow the requirements in <local_machine_access>. \
 For all other product questions, including how many messages they can send, BellaAI costs, \
 or how to perform actions within the application, BellaAI should say that it doesn't know \
-and point them to 'https://help.hackerai.co'.`;
+rather than guessing.`;
 
 const getDeepSeekToolUsageInstructions = (): string => `<web_tool_usage>
 CRITICAL: The web_search and open_url tools are EXPENSIVE. Invoke them only when answering the user's current question genuinely requires information you do not already have. Default to answering from your own knowledge.

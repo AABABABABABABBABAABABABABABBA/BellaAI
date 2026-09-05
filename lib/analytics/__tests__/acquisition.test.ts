@@ -13,7 +13,7 @@ describe("first-touch acquisition attribution", () => {
   it("keeps bounded campaign metadata without URLs or search terms", () => {
     const attribution = createFirstTouchAttribution({
       url: new URL(
-        "https://hackerai.co/?utm_source=newsletter&utm_medium=email&utm_campaign=aug_launch&utm_term=private-target",
+        "https://bellaai.snore.pw/?utm_source=newsletter&utm_medium=email&utm_campaign=aug_launch&utm_term=private-target",
       ),
       referer: "https://mail.example/path?secret=value",
       capturedAt,
@@ -35,7 +35,7 @@ describe("first-touch acquisition attribution", () => {
   it("classifies organic, referral, paid, and direct entry", () => {
     expect(
       createFirstTouchAttribution({
-        url: new URL("https://hackerai.co/download"),
+        url: new URL("https://bellaai.snore.pw/download"),
         referer: "https://www.google.com/search?q=hackerai",
         capturedAt,
       }),
@@ -47,7 +47,7 @@ describe("first-touch acquisition attribution", () => {
     });
     expect(
       createFirstTouchAttribution({
-        url: new URL("https://hackerai.co/"),
+        url: new URL("https://bellaai.snore.pw/"),
         referer:
           "android-app://com.google.android.googlequicksearchbox/https/www.google.com",
         capturedAt,
@@ -60,22 +60,22 @@ describe("first-touch acquisition attribution", () => {
     });
     expect(
       createFirstTouchAttribution({
-        url: new URL("https://hackerai.co/?ref=SAFE123"),
+        url: new URL("https://bellaai.snore.pw/?ref=SAFE123"),
         referer: null,
         capturedAt,
       }),
     ).toMatchObject({ source: "user_referral", medium: "referral" });
     expect(
       createFirstTouchAttribution({
-        url: new URL("https://hackerai.co/?gclid=opaque-click-id"),
+        url: new URL("https://bellaai.snore.pw/?gclid=opaque-click-id"),
         referer: null,
         capturedAt,
       }),
     ).toMatchObject({ source: "google", medium: "paid" });
     expect(
       createFirstTouchAttribution({
-        url: new URL("https://hackerai.co/"),
-        referer: "https://signin.hackerai.co/callback",
+        url: new URL("https://bellaai.snore.pw/"),
+        referer: "https://signin.bellaai.snore.pw/callback",
         capturedAt,
       }),
     ).toMatchObject({
@@ -87,17 +87,17 @@ describe("first-touch acquisition attribution", () => {
 
   it("distinguishes assistant referrers, UTM-only markers, and intermediary visits", () => {
     const directReferrer = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/product"),
+      url: new URL("https://bellaai.snore.pw/product"),
       referer: "https://chatgpt.com/c/opaque-conversation-id",
       capturedAt,
     });
     const utmOnly = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/pricing?utm_source=chatgpt"),
+      url: new URL("https://bellaai.snore.pw/pricing?utm_source=chatgpt"),
       referer: null,
       capturedAt,
     });
     const intermediary = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/?utm_source=chatgpt"),
+      url: new URL("https://bellaai.snore.pw/?utm_source=chatgpt"),
       referer: "https://www.google.com/search?q=hackerai",
       capturedAt,
     });
@@ -124,7 +124,7 @@ describe("first-touch acquisition attribution", () => {
 
   it("recognizes Gemini as an assistant before generic Google search", () => {
     const attribution = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/"),
+      url: new URL("https://bellaai.snore.pw/"),
       referer: "https://gemini.google.com/app/example",
       capturedAt,
     });
@@ -142,7 +142,7 @@ describe("first-touch acquisition attribution", () => {
 
   it("normalizes assistant subdomains without recording a full referral URL", () => {
     const attribution = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/"),
+      url: new URL("https://bellaai.snore.pw/"),
       referer: "https://chat.openai.com/share/opaque-id?private=value",
       capturedAt,
     });
@@ -191,7 +191,7 @@ describe("first-touch acquisition attribution", () => {
 
   it("round-trips valid values and rejects tampered cookies", () => {
     const attribution = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/?utm_source=partner"),
+      url: new URL("https://bellaai.snore.pw/?utm_source=partner"),
       referer: "https://partner.example/path",
       capturedAt,
     });
@@ -210,7 +210,7 @@ describe("first-touch acquisition attribution", () => {
 
   it("maps attribution to set-once person properties", () => {
     const attribution = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/trust?utm_source=github"),
+      url: new URL("https://bellaai.snore.pw/trust?utm_source=github"),
       referer: "https://github.com/hackerai-tech",
       capturedAt,
     });
@@ -231,7 +231,7 @@ describe("first-touch acquisition attribution", () => {
 
   it("adds a normalized search engine without adding another event", () => {
     const attribution = createFirstTouchAttribution({
-      url: new URL("https://hackerai.co/"),
+      url: new URL("https://bellaai.snore.pw/"),
       referer:
         "android-app://com.google.android.googlequicksearchbox/https/www.google.com",
       capturedAt,

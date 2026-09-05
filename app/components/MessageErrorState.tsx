@@ -7,6 +7,7 @@ import {
   getRecommendedExtraUsagePurchaseAmount,
 } from "@/app/components/extra-usage/BuyExtraUsageDialog";
 import { api } from "@/convex/_generated/api";
+import { GITHUB_URL } from "@/lib/seo/site";
 import { toast } from "sonner";
 import { MemoizedMarkdown } from "./MemoizedMarkdown";
 import {
@@ -500,11 +501,7 @@ export const MessageErrorState = ({
                 variant="default"
                 size="sm"
                 onClick={() =>
-                  window.open(
-                    "https://help.hackerai.co/",
-                    "_blank",
-                    "noopener,noreferrer",
-                  )
+                  window.open(GITHUB_URL, "_blank", "noopener,noreferrer")
                 }
               >
                 Contact Support

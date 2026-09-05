@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     description: APP_DESCRIPTION,
     images: [
       {
-        url: "https://hackerai.co/icon-512x512.png",
+        url: `${SITE_URL}/icon-512x512.png`,
         width: 512,
         height: 512,
         alt: "BellaAI",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
     description: APP_DESCRIPTION,
     images: [
       {
-        url: "https://hackerai.co/icon-512x512.png",
+        url: `${SITE_URL}/icon-512x512.png`,
         width: 512,
         height: 512,
         alt: "BellaAI",

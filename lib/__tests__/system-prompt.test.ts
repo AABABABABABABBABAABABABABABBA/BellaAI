@@ -732,9 +732,6 @@ Commands run directly on the host OS "workstation" without Docker isolation. Be 
         null,
         sandboxContext,
       );
-      const setupUrl =
-        "https://help.hackerai.co/en/articles/12961920-connecting-a-hackerai-agent-to-your-local-machine";
-
       expect(prompt).toContain("<local_machine_access>");
       expect(prompt).toContain(
         "Switching to Agent Mode or upgrading does not automatically connect BellaAI to the user's computer.",
@@ -745,7 +742,6 @@ Commands run directly on the host OS "workstation" without Docker isolation. Be 
       expect(prompt).toContain(
         "Local Agent access is available on every plan, including Free.",
       );
-      expect(prompt.split(setupUrl)).toHaveLength(2);
       expect(prompt).toContain(expectedVariant);
     },
   );

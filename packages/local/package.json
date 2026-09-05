@@ -1,9 +1,9 @@
 {
-  "name": "@hackerai/local",
+  "name": "@bellai/local",
   "version": "0.8.5",
-  "description": "HackerAI Local Sandbox Client - Execute commands on your local machine",
+  "description": "BellaAI Local Sandbox Client - Execute commands on your local machine",
   "bin": {
-    "hackerai-local": "./dist/index.js"
+    "bellai-local": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,17 +16,17 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "hackerai",
+    "bellai",
     "sandbox",
     "pentesting",
     "security",
     "cli"
   ],
-  "author": "HackerAI",
+  "author": "BellaAI",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hackerai-tech/hackerai.git",
+    "url": "https://github.com/AABABABABABABBABAABABABABABBA/BellaAI.git",
     "directory": "packages/local"
   },
   "engines": {

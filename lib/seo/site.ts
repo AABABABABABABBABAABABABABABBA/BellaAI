@@ -2,22 +2,13 @@ import type { Metadata } from "next";
 import { PRICING } from "@/lib/pricing/config";
 
 export const SITE_NAME = "BellaAI";
-export const SITE_URL = "https://hackerai.co";
+export const SITE_URL = "https://bellaai.snore.pw";
 export const SITE_DESCRIPTION =
   "BellaAI is an AI agent for penetration testing that helps security practitioners investigate targets, use terminal and browser tools, analyze findings, and prepare reports.";
 export const SITE_LOGO_URL = `${SITE_URL}/icon-512x512.png`;
 export const SITE_SCREENSHOT_URL = `${SITE_URL}/images/hackerai-workspace.png`;
-export const GITHUB_URL = "https://github.com/hackerai-tech/hackerai";
-export const HELP_CENTER_URL = "https://help.hackerai.co/en/";
-export const LOCAL_AGENT_HELP_URL =
-  "https://help.hackerai.co/en/articles/12961920-connecting-a-hackerai-agent-to-your-local-machine";
-export const EXTRA_USAGE_HELP_URL =
-  "https://help.hackerai.co/en/articles/13455916-extra-usage-for-paid-hackerai-plans";
-export const CANCELLATION_HELP_URL =
-  "https://help.hackerai.co/en/articles/14053370-how-do-i-cancel-my-hackerai-subscription";
-export const REFUND_HELP_URL =
-  "https://help.hackerai.co/en/articles/12242991-how-do-i-request-a-refund-for-my-hackerai-subscription";
-export const STATUS_PAGE_URL = "https://status.hackerai.co/";
+export const GITHUB_URL =
+  "https://github.com/AABABABABABABBABAABABABABABBA/BellaAI";
 
 export const PUBLIC_PAGE_LAST_MODIFIED = {
   home: "2026-09-02",

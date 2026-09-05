@@ -12,7 +12,7 @@ import { PRICING } from "@/lib/pricing/config";
 
 describe("public site metadata", () => {
   it("builds self-referencing canonical paths against the site metadata base", () => {
-    expect(SITE_URL).toBe("https://hackerai.co");
+    expect(SITE_URL).toBe("https://bellaai.snore.pw");
     expect(canonicalMetadata("/product")).toEqual({
       alternates: { canonical: "/product" },
     });
@@ -20,12 +20,12 @@ describe("public site metadata", () => {
   });
 
   it.each([
-    ["/", "https://hackerai.co/?utm_source=chatgpt&utm_medium=referral"],
-    ["/product", "https://hackerai.co/product?ref=assistant"],
-    ["/pricing", "https://hackerai.co/pricing?trk=partner"],
+    ["/", "https://bellaai.snore.pw/?utm_source=chatgpt&utm_medium=referral"],
+    ["/product", "https://bellaai.snore.pw/product?ref=assistant"],
+    ["/pricing", "https://bellaai.snore.pw/pricing?trk=partner"],
     [
       "/download",
-      "https://hackerai.co/download?snoball_referral=campaign#desktop",
+      "https://bellaai.snore.pw/download?snoball_referral=campaign#desktop",
     ],
   ] as const)(
     "keeps the %s canonical clean for parameterized entry URLs",
@@ -43,25 +43,25 @@ describe("public site metadata", () => {
     expect(ORGANIZATION_JSON_LD).toMatchObject({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "@id": "https://hackerai.co/#organization",
+      "@id": "https://bellaai.snore.pw/#organization",
       name: "BellaAI",
-      url: "https://hackerai.co",
+      url: "https://bellaai.snore.pw",
     });
     expect(WEBSITE_JSON_LD).toMatchObject({
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "@id": "https://hackerai.co/#website",
+      "@id": "https://bellaai.snore.pw/#website",
       name: "BellaAI",
-      url: "https://hackerai.co",
-      publisher: { "@id": "https://hackerai.co/#organization" },
+      url: "https://bellaai.snore.pw",
+      publisher: { "@id": "https://bellaai.snore.pw/#organization" },
     });
     expect(SOFTWARE_APPLICATION_JSON_LD).toMatchObject({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "@id": "https://hackerai.co/product#software-application",
+      "@id": "https://bellaai.snore.pw/product#software-application",
       name: "BellaAI",
-      url: "https://hackerai.co/product",
-      publisher: { "@id": "https://hackerai.co/#organization" },
+      url: "https://bellaai.snore.pw/product",
+      publisher: { "@id": "https://bellaai.snore.pw/#organization" },
     });
     const expectedOffers = [
       ["BellaAI Free", "0"],

@@ -48,3 +48,27 @@ export function resolveSubscriptionTier(
 export function hasPaidEntitlement(entitlements: readonly string[]): boolean {
   return resolveSubscriptionTier(entitlements) !== "free";
 }
+
+/**
+ * Self-hosted admin override: grants Ultra tier to specific accounts without
+ * needing WorkOS Entitlements/RBAC configured. Set
+ * NEXT_PUBLIC_SELF_HOSTED_ADMIN_EMAILS to a comma-separated list of emails in
+ * .env.local. Uses a NEXT_PUBLIC_ var (not a secret) so both this
+ * server-side check and GlobalState's client-side entitlements resolution
+ * apply the same override consistently.
+ */
+const getAdminOverrideEmails = (): string[] =>
+  (process.env.NEXT_PUBLIC_SELF_HOSTED_ADMIN_EMAILS ?? "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+
+export function applyAdminTierOverride(
+  subscription: SubscriptionTier,
+  email: string | null | undefined,
+): SubscriptionTier {
+  if (!email) return subscription;
+  return getAdminOverrideEmails().includes(email.toLowerCase())
+    ? "ultra"
+    : subscription;
+}

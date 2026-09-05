@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  HELP_CENTER_URL,
   PUBLIC_PAGE_LAST_MODIFIED,
-  REFUND_HELP_URL,
   canonicalMetadata,
   formatPublicPageDate,
 } from "@/lib/seo/site";
@@ -181,26 +179,17 @@ export default function TermsOfServicePage() {
               effect at the end of the current billing period.
             </p>
             <p className="mt-2">
-              Except where required by law or as described in our{" "}
-              <a
-                href={REFUND_HELP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkClassName}
-              >
-                refund guidelines
-              </a>
-              , all payments are final and non-refundable, and we do not provide
-              refunds or credits for partial periods, unused usage, downgrades,
-              or unused seats. Usage credits and balances have no cash value,
-              are non-transferable, may expire, and are forfeited when your
-              account is closed. Plan changes may be prorated. If a payment
-              fails or is disputed, we may suspend or downgrade your account
-              until the balance is paid. We may change prices or plans with
-              reasonable notice, and continued use after the change takes effect
-              constitutes acceptance. We may offer trials, promotions,
-              discounts, or experimental pricing on any terms we choose and may
-              modify or withdraw them at any time.
+              Except where required by law, all payments are final and
+              non-refundable, and we do not provide refunds or credits for
+              partial periods, unused usage, downgrades, or unused seats. Usage
+              credits and balances have no cash value, are non-transferable, may
+              expire, and are forfeited when your account is closed. Plan
+              changes may be prorated. If a payment fails or is disputed, we may
+              suspend or downgrade your account until the balance is paid. We
+              may change prices or plans with reasonable notice, and continued
+              use after the change takes effect constitutes acceptance. We may
+              offer trials, promotions, discounts, or experimental pricing on
+              any terms we choose and may modify or withdraw them at any time.
             </p>
           </section>
 
@@ -407,16 +396,7 @@ export default function TermsOfServicePage() {
               in connection with a merger, acquisition, or sale of assets.
               Nothing in these Terms creates a partnership, agency, or
               employment relationship. Questions about these Terms can be sent
-              through our{" "}
-              <a
-                href={HELP_CENTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkClassName}
-              >
-                help center
-              </a>
-              .
+              through our support channels.
             </p>
           </section>
         </div>

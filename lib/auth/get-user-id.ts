@@ -3,6 +3,7 @@ import { ChatSDKError } from "@/lib/errors";
 import type { SubscriptionTier } from "@/types";
 import { createFreeQuotaSubject } from "@/lib/auth/free-quota-subject";
 import {
+  applyAdminTierOverride,
   parseEntitlements,
   resolveSubscriptionTier,
 } from "@/lib/auth/entitlements";
@@ -72,7 +73,10 @@ export const getUserIDAndPro = async (
     }
 
     const entitlements = parseEntitlements(session.entitlements);
-    const subscription = resolveSubscriptionTier(entitlements);
+    const subscription = applyAdminTierOverride(
+      resolveSubscriptionTier(entitlements),
+      getSessionUserEmail(session),
+    );
 
     return {
       userId: session.user.id,

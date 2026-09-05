@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/lib/seo/site";
+
 const ROBOTS_CONTENT = `User-agent: *
 Allow: /
 Disallow: /api/
@@ -12,7 +14,7 @@ Disallow: /desktop-login
 Disallow: /desktop-callback
 Disallow: /auth-error
 
-Sitemap: https://hackerai.co/sitemap.xml
+Sitemap: ${SITE_URL}/sitemap.xml
 `;
 
 export const dynamic = "force-static";

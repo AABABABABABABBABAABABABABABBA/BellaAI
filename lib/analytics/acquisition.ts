@@ -5,7 +5,7 @@ export const FIRST_TOUCH_ATTRIBUTION_VERSION = 1;
 export const FIRST_TOUCH_ATTRIBUTION_MAX_AGE_SECONDS = 90 * 24 * 60 * 60;
 
 const SAFE_CAMPAIGN_LABEL = /^[A-Za-z0-9_$_.:-]{1,80}$/;
-const OWNED_HOST_SUFFIXES = ["hackerai.co"] as const;
+const OWNED_HOST_SUFFIXES = ["bellaai.snore.pw"] as const;
 const GOOGLE_ANDROID_SEARCH_APP = "com.google.android.googlequicksearchbox";
 
 const COMMUNITY_DOMAINS = new Set([

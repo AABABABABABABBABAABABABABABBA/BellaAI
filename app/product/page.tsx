@@ -21,9 +21,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/button";
 import {
   GITHUB_URL,
-  HELP_CENTER_URL,
   SOFTWARE_APPLICATION_JSON_LD,
-  STATUS_PAGE_URL,
   canonicalMetadata,
 } from "@/lib/seo/site";
 
@@ -91,8 +89,6 @@ const expectations = [
 
 const officialLinks = [
   { href: GITHUB_URL, label: "Source code", icon: GitBranch },
-  { href: HELP_CENTER_URL, label: "Help Center", icon: ExternalLink },
-  { href: STATUS_PAGE_URL, label: "Status page", icon: ExternalLink },
 ] as const;
 
 const sectionTitle = "text-3xl font-medium tracking-tight sm:text-4xl";
@@ -138,7 +134,7 @@ export default function ProductPage() {
             </div>
             <ZoomableImage
               src="/images/hackerai-workspace.png"
-              alt="BellaAI Agent mode running recon on hackerai.co: a to-do plan, reasoning, and commands executing in the task"
+              alt="BellaAI Agent mode running recon on example.com: a to-do plan, reasoning, and commands executing in the task"
               width={2240}
               height={1400}
               priority

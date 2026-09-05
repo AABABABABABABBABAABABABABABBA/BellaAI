@@ -193,9 +193,9 @@ describe("token-bucket", () => {
       expect(limits.monthly).toBe(600_000);
     });
 
-    it("should return fixed monthly credits for ultra tier ($200)", () => {
+    it("should return fixed monthly credits for ultra tier ($50,000, self-hosted override)", () => {
       const limits = getBudgetLimits("ultra");
-      expect(limits.monthly).toBe(2_000_000);
+      expect(limits.monthly).toBe(500_000_000);
     });
 
     it("should return fixed monthly credits for team tier ($40)", () => {
@@ -203,11 +203,11 @@ describe("token-bucket", () => {
       expect(limits.monthly).toBe(400_000);
     });
 
-    it("ultra should have 8x more monthly credits than pro", () => {
+    it("ultra should have 2000x more monthly credits than pro (self-hosted override)", () => {
       const proLimits = getBudgetLimits("pro");
       const ultraLimits = getBudgetLimits("ultra");
 
-      expect(ultraLimits.monthly / proLimits.monthly).toBe(8);
+      expect(ultraLimits.monthly / proLimits.monthly).toBe(2000);
     });
 
     it("pro-plus should have 2.4x more monthly credits than pro", () => {
@@ -241,7 +241,7 @@ describe("token-bucket", () => {
     it("should return subscription price in dollars for each tier", () => {
       expect(getSubscriptionPrice("pro")).toBe(25);
       expect(getSubscriptionPrice("pro-plus")).toBe(60);
-      expect(getSubscriptionPrice("ultra")).toBe(200);
+      expect(getSubscriptionPrice("ultra")).toBe(50_000);
       expect(getSubscriptionPrice("team")).toBe(40);
     });
 

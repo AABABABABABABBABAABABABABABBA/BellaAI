@@ -563,7 +563,9 @@ const MONTHLY_CREDITS: Record<string, number> = {
   free: 0,
   pro: 250_000, // $25
   "pro-plus": 600_000, // $60
-  ultra: 2_000_000, // $200
+  // Self-hosted instance: raised well past the original $200/mo assumption
+  // so a personal Ultra account never realistically hits the monthly cap.
+  ultra: 500_000_000, // $50,000 equivalent
   team: 400_000, // $40
 };
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
 import { BellaAISVG } from "@/components/icons/hackerai-svg";
-import { GITHUB_URL, HELP_CENTER_URL, STATUS_PAGE_URL } from "@/lib/seo/site";
+import { GITHUB_URL } from "@/lib/seo/site";
 
 type FooterLink = { href: string; label: string; external?: boolean };
 
@@ -26,11 +26,7 @@ const columns: ReadonlyArray<{ title: string; links: readonly FooterLink[] }> =
     },
     {
       title: "Resources",
-      links: [
-        { href: GITHUB_URL, label: "GitHub", external: true },
-        { href: HELP_CENTER_URL, label: "Help Center", external: true },
-        { href: STATUS_PAGE_URL, label: "Status", external: true },
-      ],
+      links: [{ href: GITHUB_URL, label: "GitHub", external: true }],
     },
   ];
 
