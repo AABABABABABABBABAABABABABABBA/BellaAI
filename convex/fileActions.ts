@@ -688,6 +688,7 @@ export const saveFile = action({
 
     let actingUserId: string;
     let entitlements: Array<string> = [];
+    let actingUserEmail: string | undefined;
 
     // Service key flow (backend)
     if (args.serviceKey) {
@@ -711,6 +712,7 @@ export const saveFile = action({
       }
       actingUserId = user.subject;
       entitlements = parseEntitlements(user.entitlements);
+      actingUserEmail = user.email;
 
       // Security: Only backend (service key) flows can directly set skipTokenValidation
       // Client can use mode="agent" to skip validation
@@ -732,7 +734,7 @@ export const saveFile = action({
       args.skipTokenValidation || isAgentUploadMode;
 
     // Check if paid tier (free tier cannot upload)
-    if (!hasPaidEntitlement(entitlements)) {
+    if (!hasPaidEntitlement(entitlements, actingUserEmail)) {
       throw new ConvexError({
         code: "PAID_PLAN_REQUIRED",
         message: "Paid plan required for file uploads",

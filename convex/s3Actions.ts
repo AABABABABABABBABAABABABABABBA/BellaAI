@@ -175,7 +175,7 @@ export const generateS3UploadUrlAction = action({
     const userId = identity.subject;
     const entitlements = getIdentityEntitlements(identity);
 
-    if (!hasPaidEntitlement(entitlements)) {
+    if (!hasPaidEntitlement(entitlements, identity.email)) {
       throw new ConvexError({
         code: "PAID_PLAN_REQUIRED",
         message: "Paid plan required for file uploads",

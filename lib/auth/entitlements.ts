@@ -45,17 +45,14 @@ export function resolveSubscriptionTier(
   return "free";
 }
 
-export function hasPaidEntitlement(entitlements: readonly string[]): boolean {
-  return resolveSubscriptionTier(entitlements) !== "free";
-}
-
 /**
  * Self-hosted admin override: grants Ultra tier to specific accounts without
  * needing WorkOS Entitlements/RBAC configured. Set
- * NEXT_PUBLIC_SELF_HOSTED_ADMIN_EMAILS to a comma-separated list of emails in
- * .env.local. Uses a NEXT_PUBLIC_ var (not a secret) so both this
- * server-side check and GlobalState's client-side entitlements resolution
- * apply the same override consistently.
+ * NEXT_PUBLIC_SELF_HOSTED_ADMIN_EMAILS to a comma-separated list of emails
+ * (in .env.local for Next.js, and via `npx convex env set` for Convex - they
+ * run as separate deployments with separate env storage). Uses a
+ * NEXT_PUBLIC_ var (not a secret) so both server-side checks and
+ * GlobalState's client-side entitlements resolution apply the same override.
  */
 const getAdminOverrideEmails = (): string[] =>
   (process.env.NEXT_PUBLIC_SELF_HOSTED_ADMIN_EMAILS ?? "")
@@ -63,12 +60,22 @@ const getAdminOverrideEmails = (): string[] =>
     .map((email) => email.trim().toLowerCase())
     .filter(Boolean);
 
+const isAdminOverrideEmail = (email: string | null | undefined): boolean =>
+  !!email && getAdminOverrideEmails().includes(email.toLowerCase());
+
 export function applyAdminTierOverride(
   subscription: SubscriptionTier,
   email: string | null | undefined,
 ): SubscriptionTier {
-  if (!email) return subscription;
-  return getAdminOverrideEmails().includes(email.toLowerCase())
-    ? "ultra"
-    : subscription;
+  return isAdminOverrideEmail(email) ? "ultra" : subscription;
+}
+
+export function hasPaidEntitlement(
+  entitlements: readonly string[],
+  email?: string | null,
+): boolean {
+  return (
+    resolveSubscriptionTier(entitlements) !== "free" ||
+    isAdminOverrideEmail(email)
+  );
 }

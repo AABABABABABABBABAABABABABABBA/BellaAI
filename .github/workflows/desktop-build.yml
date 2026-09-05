@@ -324,8 +324,16 @@ jobs:
             fi
           done
 
+      - name: Check Azure Trusted Signing credentials
+        if: matrix.platform == 'windows-latest'
+        id: check-azure-signing
+        env:
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        shell: bash
+        run: echo "configured=${AZURE_TENANT_ID:+true}" >> "$GITHUB_OUTPUT"
+
       - name: Sign Windows executables with Azure Trusted Signing
-        if: matrix.platform == 'windows-latest' && secrets.AZURE_TENANT_ID != ''
+        if: matrix.platform == 'windows-latest' && steps.check-azure-signing.outputs.configured == 'true'
         uses: azure/trusted-signing-action@c7ab2a863ab5f9a846ddb8265964877ef296ee82 # v2.0.0
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
