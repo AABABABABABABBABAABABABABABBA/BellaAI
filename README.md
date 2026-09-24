@@ -5,6 +5,7 @@
 </p>
 
 <h1 align="center">BellaAI</h1>
+<h3 align="center">BellaAI ( was hosted on a dedicated server but i cant afford to renew it) You can still self host </h1>
 
 <h2 align="center">Your AI-Powered Penetration Testing Assistant</h2>
 
